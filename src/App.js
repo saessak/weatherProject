@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+
+  const getCurrentLocation=()=>{
+    navigator.geolocation.getCurrentPosition((position)=>{
+      let lat = position.coords.latitude
+      let lon = position.coords.longitude
+      console.log("현재위치", lat, lon)
+    });
+  }
+
+  
+  useEffect(()=>{
+    getCurrentLocation();
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      현재위치 가져오기
     </div>
   );
 }
